@@ -10,8 +10,8 @@ import os
 
 # ── Load env and init Gemini client ──────────────────────────────────────────
 load_dotenv()
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY") or st.secrets.get("GEMINI_API_KEY")GEMINI_MODEL   = "gemini-2.5-flash"
-client = genai.Client(api_key=GEMINI_API_KEY)
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY") or st.secrets.get("GEMINI_API_KEY")
+GEMINI_MODEL   = "gemini-2.5-flash"
 
 # ── Page config ───────────────────────────────────────────────────────────────
 st.set_page_config(
