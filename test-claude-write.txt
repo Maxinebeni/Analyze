@@ -1,0 +1,1 @@
+Claude can write to this repo via MCP.
