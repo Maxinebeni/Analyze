@@ -49,13 +49,13 @@ export default function DataPreviewTab({ rows, sheetName }: Props) {
   return (
     <div className="p-6 space-y-4">
       <div className="flex items-center justify-between">
-        <div className="text-xs font-semibold uppercase tracking-widest text-ambi-green border-b border-ambi-border pb-1">
+        <div className="text-xs font-semibold uppercase tracking-widest text-gh-blue border-b border-gh-border pb-1">
           {sheetName} — {rows.length.toLocaleString()} rows × {cols.length} columns
         </div>
         <button
           onClick={downloadCSV}
-          className="flex items-center gap-2 text-sm text-ambi-muted border border-ambi-border
-                     rounded-lg px-3 py-1.5 hover:text-ambi-text hover:border-ambi-border2 transition-colors bg-ambi-surface"
+          className="flex items-center gap-2 text-sm text-gh-muted border border-gh-border
+                     rounded-lg px-3 py-1.5 hover:text-gh-text hover:border-gh-border2 transition-colors"
         >
           <Download size={13} /> Download CSV
         </button>
@@ -67,13 +67,13 @@ export default function DataPreviewTab({ rows, sheetName }: Props) {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search across all columns…"
-          className="flex-1 bg-ambi-surface border border-ambi-border2 text-ambi-text rounded-lg
-                     px-4 py-2 text-sm placeholder:text-ambi-muted focus:outline-none focus:border-ambi-green shadow-sm"
+          className="flex-1 bg-gh-surface border border-gh-border2 text-gh-text rounded-lg
+                     px-4 py-2 text-sm placeholder:text-gh-muted focus:outline-none focus:border-gh-blue"
         />
         <select
           value={pageSize}
           onChange={(e) => setPageSize(Number(e.target.value))}
-          className="bg-ambi-surface border border-ambi-border2 text-ambi-text text-sm rounded-lg px-3 py-2 focus:outline-none focus:border-ambi-green"
+          className="bg-gh-surface border border-gh-border2 text-gh-text text-sm rounded-lg px-3 py-2 focus:outline-none focus:border-gh-blue"
         >
           {[20, 50, 100, 500].map((n) => (
             <option key={n} value={n}>Show {n}</option>
@@ -82,17 +82,17 @@ export default function DataPreviewTab({ rows, sheetName }: Props) {
       </div>
 
       {search && (
-        <div className="text-sm text-ambi-green font-semibold">
+        <div className="text-sm text-gh-green font-semibold">
           ✓ {filtered.length.toLocaleString()} rows match
         </div>
       )}
 
-      <div className="overflow-auto rounded-xl border border-ambi-border shadow-sm" style={{ maxHeight: 420 }}>
+      <div className="overflow-auto rounded-xl border border-gh-border" style={{ maxHeight: 420 }}>
         <table className="w-full text-xs">
-          <thead className="sticky top-0 bg-ambi-surface">
+          <thead className="sticky top-0 bg-gh-surface">
             <tr>
               {cols.map((c) => (
-                <th key={c} className="text-left px-3 py-2.5 text-ambi-muted font-semibold border-b border-ambi-border whitespace-nowrap">
+                <th key={c} className="text-left px-3 py-2.5 text-gh-muted font-semibold border-b border-gh-border whitespace-nowrap">
                   {c}
                 </th>
               ))}
@@ -100,11 +100,11 @@ export default function DataPreviewTab({ rows, sheetName }: Props) {
           </thead>
           <tbody>
             {displayed.map((row, i) => (
-              <tr key={i} className="border-b border-ambi-border hover:bg-ambi-bg transition-colors">
+              <tr key={i} className="border-b border-gh-border hover:bg-gh-surface transition-colors">
                 {cols.map((c) => (
-                  <td key={c} className="px-3 py-2 text-ambi-text whitespace-nowrap max-w-[200px] truncate">
+                  <td key={c} className="px-3 py-2 text-gh-text whitespace-nowrap max-w-[200px] truncate">
                     {row[c] === null || row[c] === undefined ? (
-                      <span className="text-ambi-muted italic">null</span>
+                      <span className="text-gh-muted italic">null</span>
                     ) : (
                       String(row[c])
                     )}
@@ -116,11 +116,11 @@ export default function DataPreviewTab({ rows, sheetName }: Props) {
         </table>
       </div>
 
-      <div className="border border-ambi-border rounded-xl overflow-hidden shadow-sm">
+      <div className="border border-gh-border rounded-xl overflow-hidden">
         <button
           onClick={() => setExpandSchema((p) => !p)}
-          className="w-full flex items-center justify-between px-4 py-3 text-sm text-ambi-muted
-                     hover:text-ambi-text bg-ambi-surface transition-colors"
+          className="w-full flex items-center justify-between px-4 py-3 text-sm text-gh-muted
+                     hover:text-gh-text bg-gh-surface transition-colors"
         >
           <span>Column schema</span>
           <span>{expandSchema ? '▲' : '▼'}</span>
@@ -128,21 +128,21 @@ export default function DataPreviewTab({ rows, sheetName }: Props) {
         {expandSchema && (
           <div className="overflow-auto">
             <table className="w-full text-xs">
-              <thead className="bg-ambi-bg">
+              <thead className="bg-gh-surface">
                 <tr>
                   {['Column', 'Type', 'Non-null', 'Nulls', 'Unique'].map((h) => (
-                    <th key={h} className="text-left px-3 py-2.5 text-ambi-muted font-semibold border-b border-ambi-border">{h}</th>
+                    <th key={h} className="text-left px-3 py-2.5 text-gh-muted font-semibold border-b border-gh-border">{h}</th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {schema.map((s) => (
-                  <tr key={s.col} className="border-b border-ambi-border">
-                    <td className="px-3 py-2 text-ambi-text font-medium">{s.col}</td>
-                    <td className="px-3 py-2 text-ambi-muted">{s.type}</td>
-                    <td className="px-3 py-2 text-ambi-text">{s.nonNull.toLocaleString()}</td>
-                    <td className="px-3 py-2 text-ambi-text">{s.nulls.toLocaleString()}</td>
-                    <td className="px-3 py-2 text-ambi-text">{s.unique.toLocaleString()}</td>
+                  <tr key={s.col} className="border-b border-gh-border">
+                    <td className="px-3 py-2 text-gh-text font-medium">{s.col}</td>
+                    <td className="px-3 py-2 text-gh-muted">{s.type}</td>
+                    <td className="px-3 py-2 text-gh-text">{s.nonNull.toLocaleString()}</td>
+                    <td className="px-3 py-2 text-gh-text">{s.nulls.toLocaleString()}</td>
+                    <td className="px-3 py-2 text-gh-text">{s.unique.toLocaleString()}</td>
                   </tr>
                 ))}
               </tbody>
