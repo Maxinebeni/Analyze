@@ -82,7 +82,7 @@ export default function ChatTab({ rows, sheetName, messages, setMessages }: Prop
       {/* Messages */}
       <div className="flex-1 overflow-y-auto px-6 py-4 space-y-4">
         {messages.length === 0 && (
-          <div className="text-center text-gh-muted text-sm pt-8">
+          <div className="text-center text-ambi-muted text-sm pt-8">
             Ask anything about your data — or use a quick question below.
           </div>
         )}
@@ -92,12 +92,14 @@ export default function ChatTab({ rows, sheetName, messages, setMessages }: Prop
             <div
               className={`max-w-[75%] rounded-xl px-4 py-3 text-sm leading-relaxed ${
                 msg.role === 'user'
-                  ? 'bg-gh-surface border border-gh-border2 text-gh-text rounded-br-sm'
-                  : 'bg-[#0D2340] border border-[#1A4080] text-gh-text rounded-bl-sm'
+                  ? 'bg-ambi-surface border border-ambi-border2 text-ambi-text rounded-br-sm shadow-sm'
+                  : 'bg-ambi-navy border border-ambi-navy text-white rounded-bl-sm shadow-sm'
               }`}
             >
-              <div className="text-[10px] font-semibold uppercase tracking-widest text-gh-muted mb-1">
-                {msg.role === 'user' ? 'You' : 'DataLens AI'}
+              <div className={`text-[10px] font-semibold uppercase tracking-widest mb-1 ${
+                msg.role === 'user' ? 'text-ambi-muted' : 'text-green-300'
+              }`}>
+                {msg.role === 'user' ? 'You' : 'AMBI-TECH AI'}
               </div>
               <div className="whitespace-pre-wrap">{msg.content}</div>
             </div>
@@ -106,13 +108,13 @@ export default function ChatTab({ rows, sheetName, messages, setMessages }: Prop
 
         {loading && (
           <div className="flex justify-start">
-            <div className="bg-[#0D2340] border border-[#1A4080] rounded-xl rounded-bl-sm px-4 py-3">
-              <div className="text-[10px] font-semibold uppercase tracking-widest text-gh-muted mb-2">DataLens AI</div>
+            <div className="bg-ambi-navy border border-ambi-navy rounded-xl rounded-bl-sm px-4 py-3 shadow-sm">
+              <div className="text-[10px] font-semibold uppercase tracking-widest text-green-300 mb-2">AMBI-TECH AI</div>
               <div className="flex gap-1">
                 {[0, 1, 2].map((i) => (
                   <span
                     key={i}
-                    className="w-2 h-2 bg-gh-blue rounded-full animate-bounce"
+                    className="w-2 h-2 bg-ambi-green rounded-full animate-bounce"
                     style={{ animationDelay: `${i * 0.15}s` }}
                   />
                 ))}
@@ -125,15 +127,15 @@ export default function ChatTab({ rows, sheetName, messages, setMessages }: Prop
 
       {/* Quick questions */}
       <div className="px-6 pb-2">
-        <div className="text-[10px] font-semibold uppercase tracking-widest text-gh-muted mb-2">Quick questions</div>
+        <div className="text-[10px] font-semibold uppercase tracking-widest text-ambi-muted mb-2">Quick questions</div>
         <div className="grid grid-cols-3 gap-1.5">
           {QUICK_QS.map((q) => (
             <button
               key={q}
               onClick={() => sendMessage(q)}
               disabled={loading}
-              className="text-xs text-gh-muted border border-gh-border rounded-lg px-3 py-2
-                         hover:border-gh-blue hover:text-gh-text transition-colors text-left
+              className="text-xs text-ambi-muted border border-ambi-border rounded-lg px-3 py-2
+                         hover:border-ambi-green hover:text-ambi-text transition-colors text-left bg-ambi-surface
                          disabled:opacity-40 disabled:cursor-not-allowed"
             >
               {q}
@@ -152,14 +154,14 @@ export default function ChatTab({ rows, sheetName, messages, setMessages }: Prop
             onKeyDown={(e) => e.key === 'Enter' && sendMessage(input)}
             placeholder="Ask about your data…"
             disabled={loading}
-            className="flex-1 bg-gh-surface border border-gh-border2 text-gh-text rounded-lg px-4 py-2.5
-                       text-sm placeholder:text-gh-muted focus:outline-none focus:border-gh-blue
-                       disabled:opacity-40"
+            className="flex-1 bg-ambi-surface border border-ambi-border2 text-ambi-text rounded-lg px-4 py-2.5
+                       text-sm placeholder:text-ambi-muted focus:outline-none focus:border-ambi-green
+                       disabled:opacity-40 shadow-sm"
           />
           <button
             onClick={() => sendMessage(input)}
             disabled={loading || !input.trim()}
-            className="bg-gh-green2 hover:bg-gh-green text-white rounded-lg px-4 py-2.5
+            className="bg-ambi-green2 hover:bg-ambi-green text-white rounded-lg px-4 py-2.5
                        transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
           >
             <Send size={16} />

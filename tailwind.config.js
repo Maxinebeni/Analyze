@@ -4,17 +4,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        gh: {
-          bg:      '#0D1117',
-          surface: '#161B22',
-          border:  '#21262D',
-          border2: '#30363D',
-          text:    '#E6EDF3',
-          muted:   '#7D8590',
-          blue:    '#388BFD',
-          green:   '#3FB950',
-          green2:  '#238636',
-          pink:    '#DB61A2',
+        ambi: {
+          bg:      '#EFF4FF',
+          surface: '#FFFFFF',
+          border:  '#D8E3F5',
+          border2: '#B8CDE8',
+          text:    '#0D1F45',
+          muted:   '#6B7A94',
+          green:   '#5DB840',
+          green2:  '#3F9020',
+          navy:    '#0D1F45',
         }
       },
       fontFamily: {

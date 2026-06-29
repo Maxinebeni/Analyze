@@ -28,7 +28,7 @@ export default function App() {
   const rows = hasData ? sheets[activeSheet] : []
 
   return (
-    <div className="flex h-screen overflow-hidden bg-gh-bg">
+    <div className="flex h-screen overflow-hidden bg-ambi-bg">
       <Sidebar
         sheets={sheets}
         activeSheet={activeSheet}
@@ -45,15 +45,15 @@ export default function App() {
         ) : (
           <>
             {/* Tab bar */}
-            <div className="flex border-b border-gh-border bg-gh-bg px-6 pt-4 gap-1">
+            <div className="flex border-b border-ambi-border bg-ambi-surface px-6 pt-4 gap-1 shadow-sm">
               {(['chat', 'explore', 'data'] as TabId[]).map((tab) => (
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
                   className={`px-4 py-2 text-sm font-medium rounded-t-lg border-b-2 transition-colors ${
                     activeTab === tab
-                      ? 'border-gh-blue text-gh-text'
-                      : 'border-transparent text-gh-muted hover:text-gh-text'
+                      ? 'border-ambi-green text-ambi-text'
+                      : 'border-transparent text-ambi-muted hover:text-ambi-text'
                   }`}
                 >
                   {tab === 'chat' && '💬 Chat'}

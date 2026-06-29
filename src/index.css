@@ -4,8 +4,8 @@
 
 @layer base {
   body {
-    background-color: #0D1117;
-    color: #E6EDF3;
+    background-color: #EFF4FF;
+    color: #0D1F45;
     font-family: 'Inter', system-ui, sans-serif;
   }
 
@@ -13,7 +13,7 @@
     width: 6px;
     height: 6px;
   }
-  ::-webkit-scrollbar-track { background: #161B22; }
-  ::-webkit-scrollbar-thumb { background: #30363D; border-radius: 3px; }
-  ::-webkit-scrollbar-thumb:hover { background: #388BFD; }
+  ::-webkit-scrollbar-track { background: #D8E3F5; }
+  ::-webkit-scrollbar-thumb { background: #B8CDE8; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #5DB840; }
 }
